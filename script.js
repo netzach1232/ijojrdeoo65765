@@ -89,3 +89,9 @@ document.querySelectorAll('.product img').forEach(img => {
         document.getElementById('orderFormModal').style.display = 'flex';
     });
 });
+
+
+function toggleAbout() {
+    const banner = document.getElementById("aboutBanner");
+    banner.style.display = (banner.style.display === "none") ? "block" : "none";
+}
