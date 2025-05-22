@@ -95,3 +95,10 @@ function toggleAbout() {
     const banner = document.getElementById("aboutBanner");
     banner.style.display = (banner.style.display === "none" || banner.style.display === "") ? "block" : "none";
 }
+
+window.addEventListener("scroll", () => {
+    const btn = document.getElementById("backToTop");
+    btn.style.display = window.scrollY > 300 ? "block" : "none";
+});
+
+
