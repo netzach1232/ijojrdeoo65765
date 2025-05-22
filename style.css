@@ -133,17 +133,20 @@ body {
 }
 
 @media (max-width: 600px) {
-  .logo {
-    width: 60px;
-    height: 60px;
-  }
-  .site-title {
-    font-size: 18px;
-  }
-  .search-box input {
-    width: 100%;
-  }
-  .product {
-    width: 45%;
-  }
+    .logo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .site-title {
+        font-size: 18px;
+    }
+
+    .search-box input {
+        width: 100%;
+    }
+
+    .product {
+        width: 45%;
+    }
 }
