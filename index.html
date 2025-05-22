@@ -18,19 +18,30 @@
             <h1 class="site-title" style="font-size: xx-large;">גמח מוצרים</h1>
         </div>
 
-        <!-- כפתור אודות -->
+        <!-- כפתור לפתיחת הבאנר -->
         <button onclick="toggleAbout()"
             style="margin: 20px; padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 6px; font-size: 16px; cursor: pointer;">
             אודות האתר
         </button>
 
-        <!-- באנר אודות שמופיע בלחיצה -->
+        <!-- באנר כ-overlay שלא מזיז את התוכן -->
         <div id="aboutBanner"
-            style="display: none; background-color: #f0f0f0; padding: 20px; margin: 20px auto; max-width: 600px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); font-size: 16px; line-height: 1.6; text-align: right;">
+            style="display:none; position:fixed; top:0; right:0; left:0; background:rgba(255,255,255,0.97); z-index:9999; padding: 30px 20px; text-align:right; font-size: x-large; line-height:1.8; box-shadow: 0 2px 10px rgba(0,0,0,0.3); border-bottom: 2px solid #007BFF; font-weight: bold;">
+            <span onclick="toggleAbout()"
+                style="position:absolute; left:20px; top:10px; font-size:26px; cursor:pointer;">❌</span>
             <strong>שלום רב,</strong><br>
             אתרנו מציע מתנות אישיות לחברים ולקרובים, ובנוסף גאדג'טים ומוצרים מועילים נוספים.<br>
             קיבלתם מתנה? אנא הוסיפו 5 שקלים בתרומה למספר המופיע באתר – לטובת אתרנו ולטובת הפלטפורמה.
         </div>
+
+        <script>
+            function toggleAbout() {
+                const banner = document.getElementById("aboutBanner");
+                banner.style.display = (banner.style.display === "none" || banner.style.display === "") ? "block" : "none";
+            }
+        </script>
+
+
 
         <div class="message-inline"
             style="font-size: x-large; font-weight: bolder; text-align: center; line-height: 1.8; margin: 20px 0;">
