@@ -1,0 +1,133 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    direction: rtl;
+    background-color: #f8f8f8;
+}
+
+.top-bar {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 6%;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    margin-left: 15px;
+}
+
+.site-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.search-box input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 250px;
+}
+
+
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px;
+}
+
+.product {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.product:hover {
+    transform: scale(1.03);
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product-name {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #444;
+}
+
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.pagination button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #ddd;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.pagination button.active {
+    background-color: #555;
+    color: white;
+}
+
+.pagination button:hover {
+    background-color: #aaa;
+}
+
+.top-bar {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+    /* במידה ויש מסך קטן */
+    gap: 20px;
+}
+
+.message-inline {
+    font-size: 14px;
+    color: #444;
+    white-space: nowrap;
+}
+
+
+.custom-line2 {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    margin-top: 90px;
+
+}
