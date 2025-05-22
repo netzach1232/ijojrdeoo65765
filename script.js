@@ -35,51 +35,6 @@ function renderPagination(currentPage) {
 showPage(1);
 
 
-document.getElementById('searchInput').addEventListener('input', function (e) {
-    const value = e.target.value.trim().toLowerCase();
-    const products = document.querySelectorAll('#allProducts .product');
-
-    let matchCount = 0;
-
-    products.forEach(product => {
-        const name = product.querySelector('.product-name').textContent.toLowerCase();
-        const match = name.includes(value);
-        product.style.display = match ? 'block' : 'none';
-        if (match) matchCount++;
-    });
-
-    // מחביא פאגינציה בזמן חיפוש
-    const pagination = document.getElementById('pagination');
-    if (pagination) {
-        pagination.style.display = value ? 'none' : 'flex';
-    }
-});
-
-
-document.getElementById('searchInput').addEventListener('input', function (e) {
-    const value = e.target.value.trim().toLowerCase();
-    const products = document.querySelectorAll('#allProducts .product');
-
-    if (value) {
-        // בזמן חיפוש - הצג רק את התואמים והחבא פאגינציה
-        let matchCount = 0;
-
-        products.forEach(product => {
-            const name = product.querySelector('.product-name').textContent.toLowerCase();
-            const match = name.includes(value);
-            product.style.display = match ? 'block' : 'none';
-            if (match) matchCount++;
-        });
-
-        paginationContainer.style.display = 'none';
-    } else {
-        // כשהחיפוש ריק - חזור להצגה רגילה של עמוד 1
-        showPage(1);
-        paginationContainer.style.display = 'flex';
-    }
-});
-
-
 // מוסיף פעולה לכל תמונה של מוצר
 document.querySelectorAll('.product img').forEach(img => {
     img.style.cursor = 'pointer';
@@ -102,3 +57,23 @@ window.addEventListener("scroll", () => {
 });
 
 
+// גלילה למוצר הראשון בתוצאות אחרי לחיצה על Enter
+document.getElementById('searchInput').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+
+        // מציאת המוצר הראשון שמוצג (לא מוסתר)
+        const firstVisibleProduct = Array.from(document.querySelectorAll('#allProducts .product'))
+            .find(p => p.style.display !== 'none');
+
+        if (firstVisibleProduct) {
+            // גלילה רכה למוצר
+            firstVisibleProduct.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // סגירת המקלדת במובייל
+            this.blur();
+        } else {
+            alert("לא נמצאו מוצרים מתאימים.");
+        }
+    }
+});
