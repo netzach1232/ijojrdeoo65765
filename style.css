@@ -120,7 +120,7 @@ body {
 .message-inline {
     font-size: 14px;
     color: #444;
-    white-space: nowrap;
+    white-space: normal;
 }
 
 
@@ -130,4 +130,20 @@ body {
     background-color: #ccc;
     margin-top: 90px;
 
+}
+
+@media (max-width: 600px) {
+  .logo {
+    width: 60px;
+    height: 60px;
+  }
+  .site-title {
+    font-size: 18px;
+  }
+  .search-box input {
+    width: 100%;
+  }
+  .product {
+    width: 45%;
+  }
 }
