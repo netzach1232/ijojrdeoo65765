@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>מוצרים מתנה</title>
+    <title>מוצרים למכירה</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -15,14 +15,12 @@
             <a href="https://www.flaticon.com/free-icons/gadget" title="gadget icons" target="_blank">
                 <img src="images/gadget.png" alt="לוגו האתר" class="logo" />
             </a>
-            <h1 class="site-title" style="font-size: xx-large;">גמח מוצרים</h1>
+            <h1 class="site-title" style="font-size: xx-large;">פיצ'יפקייס</h1>
         </div>
 
-        <!-- כפתור לפתיחת הבאנר -->
-        <button onclick="toggleAbout()"
-            style="margin: 20px; padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 6px; font-size: 16px; cursor: pointer;">
-            אודות האתר
-        </button>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="חפש מוצר..." />
+        </div>
 
         <!-- באנר כ-overlay שלא מזיז את התוכן -->
         <div id="aboutBanner"
@@ -30,37 +28,26 @@
             <span onclick="toggleAbout()"
                 style="position:absolute; left:20px; top:10px; font-size:26px; cursor:pointer;">❌</span>
             <strong>שלום רב,</strong><br>
-            אתרנו מציע מתנות אישיות לחברים ולקרובים, ובנוסף גאדג'טים ומוצרים מועילים נוספים.<br>
-            קיבלתם מתנה? אנא הוסיפו 5 שקלים בתרומה למספר המופיע באתר – לטובת אתרנו ולטובת הפלטפורמה.
+            אתרנו מציע מתנות אישיות לחברים ולקרובים, ובנוסף גאדג'טים ומוצרים מועילים נוספים.<br><br>
+            מדיניות משלוחים,
+            זמני האספקה משתנים ממוצר למוצר, ורשומים בתאור המוצר.
         </div>
 
-        <script>
-            function toggleAbout() {
-                const banner = document.getElementById("aboutBanner");
-                banner.style.display = (banner.style.display === "none" || banner.style.display === "") ? "block" : "none";
-            }
-        </script>
+        <a href="https://api.whatsapp.com/send?text=תראה איזה אתר מדהים - https://netzach1232.github.io/..."
+            target="_blank"
+            style="background: #25D366; color:white; padding: 10px 20px; border-radius: 8px; text-decoration: none;">
+            📲 שלח לחבר בוואטסאפ
+        </a>
+        <!-- כפתור לפתיחת הבאנר -->
+        <button onclick="toggleAbout()"
+            style="margin: 20px; padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 6px; font-size: 16px; cursor: pointer;">
+            אודות האתר
+        </button>
 
-
-
-        <div class="message-inline"
-            style="font-size: x-large; font-weight: bolder; text-align: center; line-height: 1.8; margin: 20px 0;">
-            🎁 לתמיכה באתר שילחו למספר ביט זה <br>
-            או שילחו הודעה למספר זה בווצאפ:
-            <span style="font-size: large; font-weight: bolder;">??????????🎁</span>
-        </div>
-
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="חפש מוצר..." />
-        </div>
 
     </header>
 
     <div style="text-align: center; line-height: 1.8; margin: 30px 0;">
-        <span style="font-weight: bold; font-size: 22px; color: #007BFF;">
-            ☝ לטובת האתר והנהנים ממנו אנא תימכו<br>
-            בנו במספר שמופיע למעלה ☝
-        </span>
         <hr style="width: 60%; margin: 20px auto; height: 1px; background-color: #ccc; border: none;" />
     </div>
 
@@ -272,6 +259,12 @@
     <meta name="keywords" content="גמ״ח, מוצרים חינם, מתנות, מוצרי גמילות חסדים, תרומות">
     <meta name="robots" content="index, follow">
 
+
+    <!-- כפתור חזרה למעלה עם תמונה -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" id="backToTop"
+        style="position:fixed; bottom:20px; left:20px; background:none; border:none; cursor:pointer; display:none; z-index:9999;">
+        <img src="images/up-arrow.png" alt="חזור למעלה" style="width: 50px; height: auto;">
+    </button>
 
     <script src="script.js"></script>
 </body>
