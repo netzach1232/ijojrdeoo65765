@@ -77,3 +77,48 @@ document.getElementById('searchInput').addEventListener('keydown', function (e) 
         }
     }
 });
+
+
+
+// מאזין ללחיצה על Enter בתיבת החיפוש
+document.getElementById('searchInput').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        triggerSearch();
+    }
+});
+
+// פונקציה ראשית של חיפוש + גלילה + שחזור
+function triggerSearch() {
+    const input = document.getElementById('searchInput');
+    const searchText = input.value.trim().toLowerCase();
+    const allProducts = document.querySelectorAll('#allProducts .product');
+
+    // אם החיפוש ריק – הצג את כל המוצרים
+    if (searchText === "") {
+        allProducts.forEach(product => product.style.display = 'block');
+        return;
+    }
+
+    let matchFound = false;
+
+    allProducts.forEach(product => {
+        const productName = product.querySelector('.product-name').textContent.toLowerCase();
+        if (productName.includes(searchText)) {
+            product.style.display = 'block';
+            if (!matchFound) {
+                product.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                matchFound = true;
+            }
+        } else {
+            product.style.display = 'none';
+        }
+    });
+
+    input.blur(); // סגירת מקלדת במובייל
+
+    if (!matchFound) {
+        alert("לא נמצאו מוצרים מתאימים.");
+    }
+}
+
