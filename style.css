@@ -176,3 +176,15 @@ body {
     padding: 0;
     cursor: pointer;
 }
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+
+#backToAllWrapper {
+    max-width: 100%;
+    box-sizing: border-box;
+}
