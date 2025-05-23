@@ -188,3 +188,16 @@ body {
     max-width: 100%;
     box-sizing: border-box;
 }
+
+#backToAllWrapper,
+#noResultsMessage {
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    word-break: break-word;
+}
+
+#backToAllWrapper img {
+    max-width: 100%;
+    height: auto;
+}
