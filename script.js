@@ -6,6 +6,20 @@ const paginationContainer = document.getElementById('pagination');
 const allProducts = Array.from(allProductsContainer.querySelectorAll('.product'));
 const totalPages = Math.ceil(allProducts.length / productsPerPage);
 
+// טעינת חיפוש מהעבר
+const savedSearch = localStorage.getItem("savedSearch");
+if (savedSearch) {
+    const input = document.getElementById("searchInput");
+    input.value = savedSearch;
+    triggerSearch(); // מבצע חיפוש אוטומטי עם הטקסט השמור
+}
+
+// שמירה כשמשנים
+document.getElementById("searchInput").addEventListener("input", function () {
+    localStorage.setItem("savedSearch", this.value);
+});
+
+
 // מציג עמוד לפי מספרו
 function showPage(page) {
     // מחביאים את כל המוצרים
@@ -97,4 +111,21 @@ document.getElementById("backToAllBtn").addEventListener("click", () => {
     backToAllWrapper.style.display = "none";
     allProducts.forEach(product => product.style.display = "block");
     showPage(1);
+});
+
+// שמירה אוטומטית של כל שדות הטופס
+const form = document.querySelector("#orderFormModal form");
+const fields = form.querySelectorAll("input, textarea");
+
+fields.forEach(field => {
+    const key = "form_" + field.name;
+
+    // טען מהשמור אם קיים
+    const saved = localStorage.getItem(key);
+    if (saved) field.value = saved;
+
+    // שמור כל שינוי
+    field.addEventListener("input", () => {
+        localStorage.setItem(key, field.value);
+    });
 });
