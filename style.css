@@ -201,3 +201,45 @@ body {
     max-width: 100%;
     height: auto;
 }
+
+#whatsappBubbleWrapper {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 9999;
+}
+
+.whatsapp-label {
+    font-size: 10px;
+    color: #555;
+    margin-bottom: 4px;
+    background: white;
+    padding: 2px 6px;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.whatsapp-bubble {
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-color: #25d36500;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.whatsapp-bubble:hover {
+    transform: scale(1.05);
+}
+
+.whatsapp-bubble img {
+    width: 40px;
+    height: 40px;
+}
