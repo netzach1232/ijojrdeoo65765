@@ -150,6 +150,13 @@ body {
     }
 }
 
+.search-box-container {
+    position: relative;
+    width: 40%;
+    max-width: 400px;
+    margin: 10px auto;
+}
+
 .search-input-with-icon {
     width: 100%;
     padding: 10px 40px 10px 10px;
