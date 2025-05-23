@@ -56,69 +56,45 @@ window.addEventListener("scroll", () => {
     btn.style.display = window.scrollY > 300 ? "block" : "none";
 });
 
+const backToAllWrapper = document.getElementById("backToAllWrapper");
+backToAllWrapper.style.display = "none"; // ודא שהעטיפה מוסתרת בהתחלה
 
-// גלילה למוצר הראשון בתוצאות אחרי לחיצה על Enter
-document.getElementById('searchInput').addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') {
-        e.preventDefault();
 
-        // מציאת המוצר הראשון שמוצג (לא מוסתר)
-        const firstVisibleProduct = Array.from(document.querySelectorAll('#allProducts .product'))
-            .find(p => p.style.display !== 'none');
+function triggerSearch() {
+    const query = document.getElementById("searchInput").value.trim().toLowerCase();
+    let anyVisible = false;
 
-        if (firstVisibleProduct) {
-            // גלילה רכה למוצר
-            firstVisibleProduct.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    allProducts.forEach(product => {
+        const name = product.querySelector('.product-name').textContent.toLowerCase();
+        const match = name.includes(query);
+        product.style.display = match ? 'block' : 'none';
+        if (match) anyVisible = true;
+    });
 
-            // סגירת המקלדת במובייל
-            this.blur();
-        } else {
-            alert("לא נמצאו מוצרים מתאימים.");
-        }
+    document.getElementById("noResultsMessage").style.display = anyVisible ? "none" : "block";
+
+    // מציג את כל הקופסה של הכפתור רק אם באמת חיפשו משהו
+    if (query.length > 0) {
+        backToAllWrapper.style.display = "block";
+    } else {
+        backToAllWrapper.style.display = "none";
     }
-});
+
+    paginationContainer.innerHTML = '';
+}
 
 
-
-// מאזין ללחיצה על Enter בתיבת החיפוש
-document.getElementById('searchInput').addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') {
-        e.preventDefault();
+document.getElementById("searchInput").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
         triggerSearch();
     }
 });
 
-// פונקציה ראשית של חיפוש + גלילה + שחזור
-function triggerSearch() {
-    const input = document.getElementById('searchInput');
-    const searchText = input.value.trim().toLowerCase();
-    const allProducts = document.querySelectorAll('#allProducts .product');
-
-    // אם החיפוש ריק – הצג את כל המוצרים
-    if (searchText === "") {
-        allProducts.forEach(product => product.style.display = 'block');
-        return;
-    }
-
-    let matchFound = false;
-
-    allProducts.forEach(product => {
-        const productName = product.querySelector('.product-name').textContent.toLowerCase();
-        if (productName.includes(searchText)) {
-            product.style.display = 'block';
-            if (!matchFound) {
-                product.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                matchFound = true;
-            }
-        } else {
-            product.style.display = 'none';
-        }
-    });
-
-    input.blur(); // סגירת מקלדת במובייל
-
-    if (!matchFound) {
-        alert("לא נמצאו מוצרים מתאימים.");
-    }
-}
-
+document.getElementById("backToAllBtn").addEventListener("click", () => {
+    document.getElementById("searchInput").value = "";
+    document.getElementById("noResultsMessage").style.display = "none";
+    backToAllWrapper.style.display = "none";
+    allProducts.forEach(product => product.style.display = "block");
+    showPage(1);
+});
